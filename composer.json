@@ -1,7 +1,7 @@
 {
-	"name": "merinsky/balikobot",
+	"name": "ThreeSixtyEu/Balikobot",
 	"description": "Balikobot API",
-	"homepage": "https://github.com/MiroslavMerinsky/Balikobot",
+	"homepage": "https://github.com/ThreeSixtyEu/Balikobot",
 	"version": "1.0.2",
 	"license": "GPL-3.0",
 	"keywords": ["Balikobot", "Delivery service", "Shipper", "API"],
