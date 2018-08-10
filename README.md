@@ -15,7 +15,7 @@ To **order shipment** you should done these steps:
 1. add packages to the front
 2. order packages collection (for each shipper)
 ```php
-use Merinsky\Balikobot\Balikobot;
+use ThreeSixtyEu\Balikobot\Balikobot;
 
 define('API_USER', '...');
 define('API_KEY', '...');
