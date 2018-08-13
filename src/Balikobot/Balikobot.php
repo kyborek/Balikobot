@@ -537,15 +537,21 @@ class Balikobot
 	 */
 	public function service($shipper, $service, array $options = [])
 	{
-		if (empty($shipper) || empty($service)) {
+		if (sizeof($this->getServices($shipper)) > 0) {
+			if (empty($shipper) || empty($service)) {
+				throw new \InvalidArgumentException('Invalid argument has been entered.');
+			}
+			if (!isset($this->getServices($shipper)[$service])) {
+				throw new \InvalidArgumentException("Invalid $service service for $shipper shipper.");
+			}
+		}
+		if (empty($shipper)) {
 			throw new \InvalidArgumentException('Invalid argument has been entered.');
 		}
 		if (!in_array($shipper, $this->getShippers())) {
 			throw new \InvalidArgumentException("Unknown $shipper shipper.");
 		}
-		if (!isset($this->getServices($shipper)[$service])) {
-			throw new \InvalidArgumentException("Invalid $service service for $shipper shipper.");
-		}
+
 
 		// clean first
 		$this->clean();
@@ -801,9 +807,8 @@ class Balikobot
 		$this->clean();
 
 		if (!isset($response[0]['package_id'])) {
-			var_dump($response);exit;
 			throw new \InvalidArgumentException(
-				'Invalid arguments. Errors: ' . serialize($response[0]) . '.',
+				'Invalid arguments. Errors: ' . var_export($response[0], true) . '.',
 				self::EXCEPTION_INVALID_REQUEST
 			);
 		}
