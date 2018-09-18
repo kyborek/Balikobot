@@ -528,6 +528,14 @@ class Balikobot
 	}
 
 	/**
+	 * @return array
+	 */
+	public function getApiBranches()
+	{
+		return $this->apiBranches;
+	}
+
+	/**
 	 * Sets service
 	 *
 	 * @param string $shipper
@@ -747,8 +755,6 @@ class Balikobot
 
 		$this->data['isCustomer'] = true;
 
-//		var_dump($this->data);exit;
-
 		return $this;
 	}
 
@@ -802,13 +808,22 @@ class Balikobot
 			$this->data['data'][self::OPTION_ORDER]
 		) : '0000000000';
 		$this->data['data']['eid'] = $this->getEid(null, $orderId);
+		$this->data['data']['return_full_errors'] = true;
 		// add only one package
 		$response = $this->call(self::REQUEST_ADD, $this->data['shipper'], [$this->data['data']]);
 		$this->clean();
 
 		if (!isset($response[0]['package_id'])) {
+			$errorMsg = "";
+			if (isset($response[0]['errors'])) {
+				foreach ($response[0]['errors'] as $error) {
+					$errorMsg .= $error['attribute'] . ": " . $error['message'] . " [" . $error['type'] . "]";
+				}
+			} else {
+				$errorMsg = var_export($response[0], true);
+			}
 			throw new \InvalidArgumentException(
-				'Invalid arguments. Errors: ' . var_export($response[0], true) . '.',
+				'Invalid arguments. Errors: ' . $errorMsg,
 				self::EXCEPTION_INVALID_REQUEST
 			);
 		}
