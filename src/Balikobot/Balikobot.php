@@ -9,9 +9,7 @@ namespace ThreeSixtyEu\Balikobot;
 class Balikobot
 {
 
-	/**
-	 * Requests
-	 */
+	// <editor-fold desc="Requests" defaultstate="collapsed">
 	const
 		REQUEST_ADD = 'add', /*< add a package */
 		REQUEST_DROP = 'drop', /*< drop a package */
@@ -28,10 +26,8 @@ class Balikobot
 		REQUEST_LABELS = 'labels', /*< get labels */
 		REQUEST_MANIPULATIONUNITS = 'manipulationunits', /*< list of units for palette shipping */
 		REQUEST_COUNTRIES4SERVICE = 'countries4service'; /*< list of available countries */
-
-	/**
-	 * Shippers
-	 */
+// </editor-fold>
+ // <editor-fold desc="Shippers" defaultstate="collapsed">
 	const
 		SHIPPER_CP = 'cp', /*< Česká pošta s.p. */
 		SHIPPER_DPD = 'dpd', /*< Direct Parcel Distribution CZ s.r.o. */
@@ -43,10 +39,8 @@ class Balikobot
 		SHIPPER_TOPTRANS = 'toptrans', /*< TOPTRANS EU a.s. */
 		SHIPPER_ULOZENKA = 'ulozenka', /*< Uloženka s.r.o. */
 		SHIPPER_ZASILKOVNA = 'zasilkovna'; /*< Zásilkovna s.r.o. */
-
-	/**
-	 * Countries ISO 3166-1 alpha-2
-	 */
+	// </editor-fold>
+ // <editor-fold desc="Countries ISO 3166-1 alpha-2" defaultstate="collapsed">
 	const
 		COUNTRY_AFGHANISTAN = 'AF', /*< Afghanistan */
 		COUNTRY_ALAND_ISLANDS = 'AX', /*< Aland Islands */
@@ -297,10 +291,8 @@ class Balikobot
 		COUNTRY_YEMEN = 'YE', /*< Yemen */
 		COUNTRY_ZAMBIA = 'ZM', /*< Zambia */
 		COUNTRY_ZIMBABWE = 'ZW'; /*< Zimbabwe */
-
-	/**
-	 * Currencies ISO 4217
-	 */
+// </editor-fold>
+ // <editor-fold desc="Currencies ISO 4217" defaultstate="collapsed">
 	const
 		CURRENCY_AUD = 'AUD', /*< dolar */
 		CURRENCY_BRL = 'BRL', /*< real */
@@ -335,10 +327,8 @@ class Balikobot
 		CURRENCY_TRY = 'TRY', /*< lira */
 		CURRENCY_USD = 'USD', /*< dolar */
 		CURRENCY_GBP = 'GBP'; /*< libra */
-
-	/**
-	 * Shippers' options
-	 */
+// </editor-fold>
+ // <editor-fold desc="Shippers' options" defaultstate="collapsed">
 	const
 		OPTION_PRICE = 'price', /*< package price; float */
 		OPTION_SERVICES = 'services', /*< additional services; array */
@@ -361,10 +351,9 @@ class Balikobot
 		OPTION_NOTE_CUSTOMER = 'note_recipient', /*< note for customer */
 		OPTION_AGE = 'require_full_age', /*< taking delivery requires full age; boolean */
 		OPTION_PASSWORD = 'password'; /*< taking delivery requires password */
-
+// </editor-fold>
+ // <editor-fold desc="Czech Post shipper's service options" defaultstate="collapsed">
 	/**
-	 * CP shipper option services
-	 *
 	 * @details Set services in a services options, the services options is an array of selected services
 	 */
 	const
@@ -427,14 +416,13 @@ class Balikobot
 		OPTION_SERVICES_76 = '76', /*< eDodejka SMS */
 		OPTION_SERVICES_77 = '77', /*< eDodejka E-mail */
 		OPTION_SERVICES_78 = '78'; /*< eDodejka SMS + E-mail */
-
-	/**
-	 * Exceptions
-	 */
+// </editor-fold>
+ // <editor-fold desc="Exceptions" defaultstate="collapsed">
 	const
 		EXCEPTION_INVALID_REQUEST = 400, /*< Invalid request */
 		EXCEPTION_NOT_SUPPORTED = 401, /*< Not supported */
 		EXCEPTION_SERVER_ERROR = 500; /*< Unexpected response from the server */
+ // </editor-fold>
 
 
 	/** @var array
