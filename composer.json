@@ -1,14 +1,14 @@
 {
-	"name": "ThreeSixtyEu/Balikobot",
-	"description": "Balikobot API",
-	"homepage": "https://github.com/ThreeSixtyEu/Balikobot",
-	"version": "1.0.2",
+	"name": "kyborek/Balikobot",
+	"description": "Balikobot API převedená na PHP 5.6 s přidanými funkcionalitami",
+	"homepage": "https://github.com/kyborek/Balikobot",
+	"version": "1.0.2.1",
 	"license": "GPL-3.0",
 	"keywords": ["Balikobot", "Delivery service", "Shipper", "API"],
 	"authors": [
 		{
-			"name": "Miroslav Merinsky",
-			"email": "miroslav@merinsky.biz"
+			"name": "Borek Hanzl",
+			"email": "admin@hanzlsoft.eu"
 		}
 	],
 	"require": {
@@ -17,7 +17,7 @@
 		"ext-json": "*"
 	},
 	"autoload": {
-		"classmap": ["src/"]
+		"classmap": ["src/Balikobot"]
 	},
 	"minimum-stability": "dev"
 }
