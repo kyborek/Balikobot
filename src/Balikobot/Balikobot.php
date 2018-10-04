@@ -784,8 +784,9 @@ class Balikobot
 	 *     'label_url' => url to the label,
 	 *     'eid' => Generated EID of the package
 	 * )
+	 * @param string $eid MAX 40 alphanumeric characters. Will be generated if not supplied
 	 */
-	public function add()
+	public function add($eid = null)
 	{
 		if (!$this->data['isService'] || !$this->data['isCustomer']) {
 			throw new \UnexpectedValueException('Call service and customer method before.');
@@ -795,7 +796,12 @@ class Balikobot
 			'%\'010s',
 			$this->data['data'][self::OPTION_ORDER]
 		) : '0000000000';
-		$this->data['data']['eid'] = $this->getEid(null, $orderId);
+  if (isset($eid)) {
+      $this->data['data']['eid'] = $eid;
+  }
+  else {
+      $this->data['data']['eid'] = $this->getEid(null, $orderId);
+  }
 		$this->data['data']['return_full_errors'] = true;
 		// add only one package
 		$response = $this->call(self::REQUEST_ADD, $this->data['shipper'], [$this->data['data']]);
