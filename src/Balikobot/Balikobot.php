@@ -721,9 +721,8 @@ class Balikobot
 					throw new \InvalidArgumentException('Invalid zip code has been entered. Match XXXXX pattern.');
 				}
 				break;
-
 			default:
-				throw new \UnexpectedValueException("Validation method is not implemented for $country country.");
+    trigger_error("Validation method is not implemented for country {$country}.", E_USER_WARNING);
 		}
 
 		if (!preg_match('/^(\+|00)42[01]\d{9}$/', $phone)) {
