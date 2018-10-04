@@ -432,16 +432,16 @@ class Balikobot
 	 * string $apiKey
 	 * int $shopId Own identification of the shop; will be used to identify packages if you use one account for several shops
 	 */
-	private $apiBranches;
+	protected $apiBranches;
 
 	/** @var int */
-	private $activeApiBranch;
+	protected $activeApiBranch;
 
 	/** @var string */
-	private $apiUrl = 'https://api.balikobot.cz';
+	protected $apiUrl = 'https://api.balikobot.cz';
 
 	/** @var array */
-	private $data = [
+	protected $data = [
 		'isService' => false,
 		'isCustomer' => false,
 		'isCashOnDelivery' => false,
@@ -1382,13 +1382,13 @@ class Balikobot
 		return $constants;
 	}
 
-	// private ---------------------------------------------------------------------------------------------------------
+	// protected ---------------------------------------------------------------------------------------------------------
 
 	/**
 	 * @param string $name
 	 * @param mixed $value
 	 */
-	private function saveOption($name, $value, $shipper = null)
+	protected function saveOption($name, $value, $shipper = null)
 	{
 		if (empty($name)) {
 			throw new \InvalidArgumentException('Invalid argument has been entered.');
@@ -1499,7 +1499,7 @@ class Balikobot
 	 * @param string $orderId
 	 * @return string
 	 */
-	private function getEid($shipper = null, $orderId = null)
+	protected function getEid($shipper = null, $orderId = null)
 	{
 		$time = time();
 		$delimeter = '';
@@ -1522,7 +1522,7 @@ class Balikobot
 	 * @param string $url
 	 * @return array
 	 */
-	private function call($request, $shipper, array $data = [], $url = null)
+	protected function call($request, $shipper, array $data = [], $url = null)
 	{
 		if (empty($request) || empty ($shipper)) {
 			throw new \InvalidArgumentException('Invalid argument has been entered.');
@@ -1553,7 +1553,7 @@ class Balikobot
 	/**
 	 * Cleans temporary data about created package
 	 */
-	private function clean()
+	protected function clean()
 	{
 		$this->data = [
 			'isService' => false,
