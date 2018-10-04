@@ -20,10 +20,11 @@ use ThreeSixtyEu\Balikobot\Balikobot;
 define('API_USER', '...');
 define('API_KEY', '...');
 define('SHOP', 100);
+define('SHOP_INDEX', 0);
 
 // create instance of the class
-$balikobot = new Balikobot(API_USER, API_KEY, SHOP);
-
+$balikobot = new Balikobot([ SHOP_INDEX => [ "apiUser"=>API_USER, "apiKey"=>API_KEY, "shopId"=>SHOP ] ]);
+$balikobot->setActiveApiBranch(SHOP_INDEX);
 // add package
 $package = $balikobot->service(Balikobot::SHIPPER_PPL, 4, [
         Balikobot::OPTION_ORDER => '2017000001',
