@@ -39,6 +39,7 @@ dump($package);
     package_id => 7338,
     label_url => http://pdf.balikobot.cz/ppl/eNorpelvMdA1trS0NAJcMA_plao.,
     status => 200,
+    eid => 10020170000011538647658,
 ]
 */
 

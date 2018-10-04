@@ -780,8 +780,9 @@ class Balikobot
 	/**
 	 * @return array(
 	 *     'carrier_id' => track and trace package id,
-	 *     'package_id' => identification used by API request
-	 *     'label_url' => url to the label
+	 *     'package_id' => identification used by API request,
+	 *     'label_url' => url to the label,
+	 *     'eid' => Generated EID of the package
 	 * )
 	 */
 	public function add()
@@ -798,6 +799,7 @@ class Balikobot
 		$this->data['data']['return_full_errors'] = true;
 		// add only one package
 		$response = $this->call(self::REQUEST_ADD, $this->data['shipper'], [$this->data['data']]);
+  $response[0]["eid"]=$this->data['data']['eid'];
 		$this->clean();
 
 		if (!isset($response[0]['package_id'])) {
