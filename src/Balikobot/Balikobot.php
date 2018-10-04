@@ -726,7 +726,7 @@ class Balikobot
 				throw new \UnexpectedValueException("Validation method is not implemented for $country country.");
 		}
 
-		if (!preg_match('/^\+420\d{9}$/', $phone)) {
+		if (!preg_match('/^(\+|00)42[01]\d{9}$/', $phone)) {
 			throw new \InvalidArgumentException('Invalid phone has been entered. Match +420YYYYYYYYY pattern.');
 		}
 
