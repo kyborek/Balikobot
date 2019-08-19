@@ -1,8 +1,8 @@
 {
-	"name": "kyborek/Balikobot",
+	"name": "kyborek/balikobot",
 	"description": "Balikobot API převedená na PHP 5.6 s přidanými funkcionalitami",
 	"homepage": "https://github.com/kyborek/Balikobot",
-	"version": "1.0.2.1",
+	"version": "1.1.1.0",
 	"license": "GPL-3.0",
 	"keywords": ["Balikobot", "Delivery service", "Shipper", "API"],
 	"authors": [
