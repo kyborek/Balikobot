@@ -6,7 +6,7 @@ It offers implementation of Balikobot API described in the [documentation, ver.1
 Installation
 ------------
 ```console
-composer require merinsky/balikobot
+composer require kyborek/balikobot
 ```
 
 Usage
@@ -23,7 +23,7 @@ define('SHOP', 100);
 define('SHOP_INDEX', 0);
 
 // create instance of the class
-$balikobot = new Balikobot([ SHOP_INDEX => [ "apiUser"=>API_USER, "apiKey"=>API_KEY, "shopId"=>SHOP ] ]);
+$balikobot = new Balikobot([ SHOP_INDEX => [ "apiUser"=>API_USER, "apiKey"=>API_KEY, "apiShopId"=>SHOP ] ]);
 $balikobot->setActiveApiBranch(SHOP_INDEX);
 // add package
 $package = $balikobot->service(Balikobot::SHIPPER_PPL, 4, [
@@ -187,6 +187,7 @@ dump($response);
 ```
 
 The methods you use very rarely:
+- **trackStatus($shipper, $carrierIds)**
 - **getCountryCodes()**
 - **getCurrencies()**
 - **getCountriesForService($shipper)**
