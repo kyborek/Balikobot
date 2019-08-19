@@ -1071,10 +1071,43 @@ class Balikobot
 	}
 
 	/**
+	 * Tracks a package statuses
+	 *
+	 * @param string $shipper
+	 * @param string[] $carrierIds
+	 * @return array Array of statuses in the same order as supplied $carrierIds, example: array( 0 => array(‚status_id‘ => 1, ‚status_text‘ => ‚Zásilka byla doručena příjemci.‘), 1 => array(‚status_id‘ => 2, ‚status_text‘ => ‚Zásilka je doručována příjemci.‘));
+	 */
+	public function trackStatus($shipper, $carrierIds)
+	{
+		if (empty($shipper)|| empty($carrierIds) || count($carrierIds)>4 || !in_array($shipper, $this->getShippers()) ) {
+			throw new \InvalidArgumentException('Invalid argument has been entered.');
+		}
+		$requestData = [];
+		foreach ($carrierIds as $carrierId){
+		    $requestData[]=["id"=>$carrierId];
+        }
+
+		$response = $this->call(self::REQUEST_TRACKSTATUS, $shipper, $requestData);
+
+		if (isset($response['status']) && ($response['status'] != 200)) {
+			throw new \UnexpectedValueException(
+				"Unexpected server response, code={$response['status']}.",
+				self::EXCEPTION_SERVER_ERROR
+			);
+		}
+		if (empty($response[0]["status_id"]) || empty($response[0]["status_text"])) {
+			throw new \UnexpectedValueException('Unexpected server response.', self::EXCEPTION_SERVER_ERROR);
+		}
+
+		return $response;
+	}
+
+	/**
 	 * Tracks a package, get the last info
 	 *
 	 * @param string $shipper
 	 * @param string $carrierId
+     * @see trackStatus for multiple packages at once
 	 * @return array
 	 */
 	public function trackPackageLast($shipper, $carrierId)
