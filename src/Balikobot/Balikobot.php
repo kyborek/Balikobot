@@ -1095,7 +1095,7 @@ class Balikobot
 				self::EXCEPTION_SERVER_ERROR
 			);
 		}
-		if (empty($response[0]["status_id"]) || empty($response[0]["status_text"])) {
+		if (!isset($response[0]["status_id"]) || !isset($response[0]["status_text"])) {
 			throw new \UnexpectedValueException('Unexpected server response.', self::EXCEPTION_SERVER_ERROR);
 		}
 
