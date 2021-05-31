@@ -17,13 +17,17 @@ To **order shipment** you should done these steps:
 ```php
 use ThreeSixtyEu\Balikobot\Balikobot;
 
+// Identifikace partnera pro provizní systém
+define('PARTNER_ID', '...');
+// Přihlašovací údaje uživatele
 define('API_USER', '...');
 define('API_KEY', '...');
+// ID hlavní pobočky
 define('SHOP', 100);
 define('SHOP_INDEX', 0);
 
 // create instance of the class
-$balikobot = new Balikobot([ SHOP_INDEX => [ "apiUser"=>API_USER, "apiKey"=>API_KEY, "apiShopId"=>SHOP ] ]);
+$balikobot = new Balikobot([ SHOP_INDEX => [ "apiUser"=>API_USER, "apiKey"=>API_KEY, "apiShopId"=>SHOP,"partnerId"=>PARTNER_ID ] ]);
 $balikobot->setActiveApiBranch(SHOP_INDEX);
 // add package
 $package = $balikobot->service(Balikobot::SHIPPER_PPL, 4, [

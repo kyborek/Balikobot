@@ -506,6 +506,16 @@ class Balikobot
 	{
 		return $this->apiBranches[$this->getActiveApiBranch()]['apiUser'];
 	}
+	/**
+	 * @return ?string
+	 */
+	public function getPartnerId()
+	{
+	    if (isset($this->apiBranches[$this->getActiveApiBranch()]['partnerId'])){
+            return $this->apiBranches[$this->getActiveApiBranch()]['partnerId'];
+        }
+	    return null;
+	}
 
 	/**
 	 * @return string
@@ -1576,13 +1586,17 @@ class Balikobot
 			curl_setopt($r, CURLOPT_POST, true);
 			curl_setopt($r, CURLOPT_POSTFIELDS, json_encode($data));
 		}
-		curl_setopt(
+        $httpHeaders = [
+            'Authorization: Basic ' . base64_encode($this->getApiUser() . ":" . $this->getApiKey()),
+            'Content-Type: application/json',
+        ];
+		if ($partnerId = $this->getPartnerId()){
+		    $httpHeaders[]="BB-Partner: $partnerId";
+        }
+        curl_setopt(
 			$r,
 			CURLOPT_HTTPHEADER,
-			[
-				'Authorization: Basic ' . base64_encode($this->getApiUser() . ":" . $this->getApiKey()),
-				'Content-Type: application/json',
-			]
+            $httpHeaders
 		);
 		$response = curl_exec($r);
 		curl_close($r);
